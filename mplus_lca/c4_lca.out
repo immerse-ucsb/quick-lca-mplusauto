@@ -1,0 +1,696 @@
+Mplus VERSION 8.6 (Mac)
+MUTHEN & MUTHEN
+02/03/2023   3:18 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  Class 4 LCA
+  DATA:
+  FILE = "/Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat";
+
+  VARIABLE:
+  NAMES = leaid ncessch report_dis report_race report_sex counselors_fte psych_fte
+       law_fte;
+   MISSING=.;
+   categorical = report_dis report_race report_sex counselors_fte psych_fte law_fte;
+  usevar = report_dis report_race report_sex counselors_fte psych_fte law_fte;
+  classes = c(4);
+  ANALYSIS:
+  estimator = mlr;
+      type = mixture;
+      starts = 1000 200;
+      processors = 10;
+  OUTPUT:
+  tech11 tech14;
+  PLOT:
+  type = plot3;
+       series = report_dis report_race report_sex counselors_fte psych_fte law_fte(*);
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Class 4 LCA
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2027
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   REPORT_D    REPORT_R    REPORT_S    COUNSELO    PSYCH_FT    LAW_FTE
+
+Categorical latent variables
+   C
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            10
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Link                                                         LOGIT
+
+Input data file(s)
+  /Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             4
+     Number of y missing data patterns           0
+     Number of u missing data patterns           4
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              REPORT_D      REPORT_R      REPORT_S      COUNSELO      PSYCH_FT
+              ________      ________      ________      ________      ________
+ REPORT_D       0.987
+ REPORT_R       0.987         0.987
+ REPORT_S       0.987         0.987         0.987
+ COUNSELO       0.973         0.973         0.973         0.987
+ PSYCH_FT       0.972         0.972         0.972         0.985         0.985
+ LAW_FTE        0.973         0.973         0.973         0.987         0.985
+
+
+           Covariance Coverage
+              LAW_FTE
+              ________
+ LAW_FTE        0.987
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    REPORT_D
+      Category 1    0.958         1915.000
+      Category 2    0.043           85.000
+    REPORT_R
+      Category 1    0.897         1794.000
+      Category 2    0.103          206.000
+    REPORT_S
+      Category 1    0.830         1660.000
+      Category 2    0.170          340.000
+    COUNSELO
+      Category 1    0.540         1081.000
+      Category 2    0.460          919.000
+    PSYCH_FT
+      Category 1    0.526         1050.000
+      Category 2    0.474          947.000
+    LAW_FTE
+      Category 1    0.875         1749.000
+      Category 2    0.126          251.000
+
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+           -5111.757  891531           206
+           -5111.757  742688           594
+           -5111.757  120506           45
+           -5111.757  193569           440
+           -5111.757  266008           656
+           -5111.757  319575           499
+           -5111.757  404426           344
+           -5111.757  148918           682
+           -5111.757  650354           577
+           -5111.757  512403           719
+           -5111.757  100874           108
+           -5111.757  357866           968
+           -5111.757  267983           228
+           -5111.757  373505           88
+           -5111.757  70118            104
+           -5111.757  638577           769
+           -5111.757  514326           325
+           -5111.757  14262            781
+           -5111.759  416463           467
+           -5112.253  568405           233
+           -5112.253  320494           465
+           -5112.253  173440           328
+           -5113.910  695155           150
+           -5115.532  349562           359
+           -5115.532  715561           125
+           -5115.532  580181           691
+           -5115.532  748692           204
+           -5115.532  476498           179
+           -5115.532  72662            729
+           -5115.532  679832           302
+           -5115.532  107446           12
+           -5115.532  856536           144
+           -5115.532  399380           436
+           -5115.532  871722           355
+           -5115.532  726744           939
+           -5115.532  118958           994
+           -5115.532  462228           298
+           -5115.532  686482           215
+           -5115.532  596257           405
+           -5115.532  302046           863
+           -5115.532  520865           763
+           -5115.532  408713           450
+           -5115.532  751054           117
+           -5115.532  822698           621
+           -5115.532  355254           796
+           -5115.532  575700           100
+           -5115.532  535804           111
+           -5115.532  281462           285
+           -5115.532  677720           681
+           -5116.981  610181           711
+           -5116.981  922042           492
+           -5117.658  538872           949
+           -5117.658  279850           555
+           -5117.829  247224           94
+           -5117.829  399671           13
+           -5117.829  296162           856
+           -5117.829  728038           177
+           -5117.829  702492           718
+           -5117.829  251641           784
+           -5117.837  665121           417
+           -5117.837  801717           364
+           -5117.837  383902           673
+           -5118.041  451258           848
+           -5118.041  752148           822
+
+136 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+     IN THE OPTIMIZATION, ONE OR MORE LOGIT THRESHOLDS APPROACHED EXTREME VALUES
+     OF -15.000 AND 15.000 AND WERE FIXED TO STABILIZE MODEL ESTIMATION.  THESE
+     VALUES IMPLY PROBABILITIES OF 0 AND 1.  IN THE MODEL RESULTS SECTION, THESE
+     PARAMETERS HAVE 0 STANDARD ERRORS AND 999 IN THE Z-SCORE AND P-VALUE COLUMNS.
+
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       27
+
+Loglikelihood
+
+          H0 Value                       -5111.757
+          H0 Scaling Correction Factor      1.0217
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   10277.513
+          Bayesian (BIC)                 10429.100
+          Sample-Size Adjusted BIC       10343.319
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes
+
+          Pearson Chi-Square
+
+          Value                             49.953
+          Degrees of Freedom                    36
+          P-Value                           0.0610
+
+          Likelihood Ratio Chi-Square
+
+          Value                             54.314
+          Degrees of Freedom                    36
+          P-Value                           0.0257
+
+Chi-Square Test for MCAR under the Unrestricted Latent Class Indicator Model
+
+          Pearson Chi-Square
+
+          Value                             42.095
+          Degrees of Freedom                    45
+          P-Value                           0.5958
+
+          Likelihood Ratio Chi-Square
+
+          Value                             57.954
+          Degrees of Freedom                    45
+          P-Value                           0.0931
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        212.17220          0.10467
+       2        562.97407          0.27774
+       3        639.42847          0.31546
+       4        612.42526          0.30213
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        212.17220          0.10467
+       2        562.97407          0.27774
+       3        639.42847          0.31546
+       4        612.42526          0.30213
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              181          0.08929
+       2              498          0.24568
+       3              883          0.43562
+       4              465          0.22940
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.715
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4
+
+    1   0.930    0.010    0.034    0.026
+    2   0.034    0.951    0.015    0.000
+    3   0.005    0.099    0.687    0.209
+    4   0.047    0.000    0.042    0.911
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4
+
+    1   0.794    0.080    0.022    0.104
+    2   0.003    0.841    0.156    0.000
+    3   0.010    0.012    0.948    0.031
+    4   0.008    0.000    0.301    0.691
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4
+
+    1      2.035   -0.255   -1.546    0.000
+    2      8.065   13.642   11.957    0.000
+    3     -1.153   -0.954    3.435    0.000
+    4     -4.514  -13.447   -0.832    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Thresholds
+    REPORT_D$1         0.782      0.169      4.626      0.000
+    REPORT_R$1        -1.371      0.371     -3.691      0.000
+    REPORT_S$1        -0.839      0.201     -4.170      0.000
+    COUNSELO$1        -0.298      0.173     -1.724      0.085
+    PSYCH_FT$1        -0.704      0.180     -3.898      0.000
+    LAW_FTE$1          1.012      0.184      5.500      0.000
+
+Latent Class 2
+
+ Thresholds
+    REPORT_D$1         4.099      0.492      8.326      0.000
+    REPORT_R$1        15.000      0.000    999.000    999.000
+    REPORT_S$1         1.360      0.161      8.463      0.000
+    COUNSELO$1       -15.000      0.000    999.000    999.000
+    PSYCH_FT$1        -1.134      0.166     -6.812      0.000
+    LAW_FTE$1          1.068      0.154      6.925      0.000
+
+Latent Class 3
+
+ Thresholds
+    REPORT_D$1         4.136      0.430      9.621      0.000
+    REPORT_R$1         4.016      0.564      7.116      0.000
+    REPORT_S$1         3.658      1.040      3.518      0.000
+    COUNSELO$1         0.471      0.263      1.787      0.074
+    PSYCH_FT$1         4.659     14.641      0.318      0.750
+    LAW_FTE$1         15.000      0.000    999.000    999.000
+
+Latent Class 4
+
+ Thresholds
+    REPORT_D$1        15.000      0.000    999.000    999.000
+    REPORT_R$1         3.065      0.358      8.559      0.000
+    REPORT_S$1         2.154      0.217      9.927      0.000
+    COUNSELO$1        15.000      0.000    999.000    999.000
+    PSYCH_FT$1        -0.534      0.432     -1.236      0.217
+    LAW_FTE$1          2.352      0.283      8.321      0.000
+
+Categorical Latent Variables
+
+ Means
+    C#1               -1.060      0.219     -4.833      0.000
+    C#2               -0.084      0.177     -0.475      0.635
+    C#3                0.043      0.471      0.092      0.927
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.101E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ REPORT_DIS
+    Category 1         0.686      0.036     18.841      0.000
+    Category 2         0.314      0.036      8.616      0.000
+ REPORT_RAC
+    Category 1         0.203      0.060      3.377      0.001
+    Category 2         0.797      0.060     13.296      0.000
+ REPORT_SEX
+    Category 1         0.302      0.042      7.123      0.000
+    Category 2         0.698      0.042     16.474      0.000
+ COUNSELORS
+    Category 1         0.426      0.042     10.062      0.000
+    Category 2         0.574      0.042     13.561      0.000
+ PSYCH_FTE
+    Category 1         0.331      0.040      8.282      0.000
+    Category 2         0.669      0.040     16.738      0.000
+ LAW_FTE
+    Category 1         0.733      0.036     20.389      0.000
+    Category 2         0.267      0.036      7.413      0.000
+
+Latent Class 2
+
+ REPORT_DIS
+    Category 1         0.984      0.008    124.460      0.000
+    Category 2         0.016      0.008      2.065      0.039
+ REPORT_RAC
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ REPORT_SEX
+    Category 1         0.796      0.026     30.469      0.000
+    Category 2         0.204      0.026      7.822      0.000
+ COUNSELORS
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         1.000      0.000      0.000      1.000
+ PSYCH_FTE
+    Category 1         0.243      0.031      7.942      0.000
+    Category 2         0.757      0.031     24.678      0.000
+ LAW_FTE
+    Category 1         0.744      0.029     25.347      0.000
+    Category 2         0.256      0.029      8.709      0.000
+
+Latent Class 3
+
+ REPORT_DIS
+    Category 1         0.984      0.007    147.797      0.000
+    Category 2         0.016      0.007      2.363      0.018
+ REPORT_RAC
+    Category 1         0.982      0.010    100.061      0.000
+    Category 2         0.018      0.010      1.804      0.071
+ REPORT_SEX
+    Category 1         0.975      0.025     38.267      0.000
+    Category 2         0.025      0.025      0.986      0.324
+ COUNSELORS
+    Category 1         0.616      0.062      9.876      0.000
+    Category 2         0.384      0.062      6.168      0.000
+ PSYCH_FTE
+    Category 1         0.991      0.136      7.280      0.000
+    Category 2         0.009      0.136      0.069      0.945
+ LAW_FTE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+
+Latent Class 4
+
+ REPORT_DIS
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ REPORT_RAC
+    Category 1         0.955      0.015     62.650      0.000
+    Category 2         0.045      0.015      2.923      0.003
+ REPORT_SEX
+    Category 1         0.896      0.020     44.338      0.000
+    Category 2         0.104      0.020      5.142      0.000
+ COUNSELORS
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ PSYCH_FTE
+    Category 1         0.370      0.101      3.671      0.000
+    Category 2         0.630      0.101      6.261      0.000
+ LAW_FTE
+    Category 1         0.913      0.022     40.716      0.000
+    Category 2         0.087      0.022      3.874      0.000
+
+
+LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+Latent Class 1 Compared to Latent Class 2
+
+ REPORT_D
+    Category > 1      27.564     14.586      9.770     77.765
+ REPORT_R
+    Category > 1   *********      0.000  *********  *********
+ REPORT_S
+    Category > 1       9.009      2.239      5.535     14.665
+ COUNSELO
+    Category > 1       0.000      0.000      0.000      0.000
+ PSYCH_FT
+    Category > 1       0.650      0.162      0.399      1.060
+ LAW_FTE
+    Category > 1       1.058      0.249      0.667      1.679
+
+Latent Class 1 Compared to Latent Class 3
+
+ REPORT_D
+    Category > 1      28.599     13.114     11.642     70.255
+ REPORT_R
+    Category > 1     218.405    145.929     58.955    809.114
+ REPORT_S
+    Category > 1      89.733     93.373     11.674    689.759
+ COUNSELO
+    Category > 1       2.158      0.692      1.151      4.046
+ PSYCH_FT
+    Category > 1     213.388   3124.927      0.000  *********
+ LAW_FTE
+    Category > 1   *********      0.000  *********  *********
+
+Latent Class 1 Compared to Latent Class 4
+
+ REPORT_D
+    Category > 1   *********      0.000  *********  *********
+ REPORT_R
+    Category > 1      84.399     41.963     31.850    223.646
+ REPORT_S
+    Category > 1      19.945      5.769     11.314     35.159
+ COUNSELO
+    Category > 1   *********      0.000  *********  *********
+ PSYCH_FT
+    Category > 1       1.185      0.560      0.469      2.992
+ LAW_FTE
+    Category > 1       3.821      1.246      2.017      7.240
+
+Latent Class 2 Compared to Latent Class 3
+
+ REPORT_D
+    Category > 1       1.038      0.744      0.254      4.233
+ REPORT_R
+    Category > 1       0.000      0.000      0.000      0.000
+ REPORT_S
+    Category > 1       9.960     10.609      1.235     80.334
+ COUNSELO
+    Category > 1   *********      0.000  *********  *********
+ PSYCH_FT
+    Category > 1     328.053   4803.591      0.000  *********
+ LAW_FTE
+    Category > 1   *********      0.000  *********  *********
+
+Latent Class 2 Compared to Latent Class 4
+
+ REPORT_D
+    Category > 1   54237.758      0.000  54237.754  54237.754
+ REPORT_R
+    Category > 1       0.000      0.000      0.000      0.000
+ REPORT_S
+    Category > 1       2.214      0.466      1.466      3.343
+ COUNSELO
+    Category > 1   *********      0.000  *********  *********
+ PSYCH_FT
+    Category > 1       1.822      0.806      0.765      4.338
+ LAW_FTE
+    Category > 1       3.611      0.929      2.181      5.980
+
+Latent Class 3 Compared to Latent Class 4
+
+ REPORT_D
+    Category > 1   52275.773      0.000  52275.773  52275.773
+ REPORT_R
+    Category > 1       0.386      0.281      0.093      1.607
+ REPORT_S
+    Category > 1       0.222      0.254      0.024      2.081
+ COUNSELO
+    Category > 1   *********      0.000  *********  *********
+ PSYCH_FT
+    Category > 1       0.006      0.081      0.000  *********
+ LAW_FTE
+    Category > 1       0.000      0.000      0.000      0.000
+
+
+TECHNICAL 11 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                1000
+        Number of final stage optimizations                   200
+
+
+
+     VUONG-LO-MENDELL-RUBIN LIKELIHOOD RATIO TEST FOR 3 (H0) VERSUS 4 CLASSES
+
+          H0 Loglikelihood Value                        -5122.478
+          2 Times the Loglikelihood Difference             21.442
+          Difference in the Number of Parameters                7
+          Mean                                              3.968
+          Standard Deviation                                5.337
+          P-Value                                          0.0113
+
+     LO-MENDELL-RUBIN ADJUSTED LRT TEST
+
+          Value                                            21.047
+          P-Value                                          0.0122
+
+
+TECHNICAL 14 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                1000
+        Number of final stage optimizations                   200
+
+     Random Starts Specification for the k-1 Class Model for Generated Data
+        Number of initial stage random starts                   0
+        Number of final stage optimizations for the
+           initial stage random starts                          0
+     Random Starts Specification for the k Class Model for Generated Data
+        Number of initial stage random starts                  40
+        Number of final stage optimizations                     8
+     Number of bootstrap draws requested                   Varies
+
+
+     PARAMETRIC BOOTSTRAPPED LIKELIHOOD RATIO TEST FOR 3 (H0) VERSUS 4 CLASSES
+
+          H0 Loglikelihood Value                        -5122.478
+          2 Times the Loglikelihood Difference             21.442
+          Difference in the Number of Parameters                7
+          Approximate P-Value                              0.0128
+          Successful Bootstrap Draws                           78
+
+     WARNING:  OF THE 78 BOOTSTRAP DRAWS, 54 DRAWS HAD BOTH A SMALLER LRT VALUE THAN THE
+     OBSERVED LRT VALUE AND NOT A REPLICATED BEST LOGLIKELIHOOD VALUE FOR THE 4-CLASS MODEL.
+     THIS MEANS THAT THE P-VALUE MAY NOT BE TRUSTWORTHY DUE TO LOCAL MAXIMA.
+     INCREASE THE NUMBER OF RANDOM STARTS USING THE LRTSTARTS OPTION.
+
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Sample proportions and estimated probabilities
+
+     Beginning Time:  15:18:41
+        Ending Time:  15:18:45
+       Elapsed Time:  00:00:04
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

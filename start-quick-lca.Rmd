@@ -1,0 +1,377 @@
+---
+title: "A Quick Latent Class Analysis (LCA) from Start to Finish in `MplusAutomation`"
+author: '*Adam Garber*'
+subtitle: "IMMERSE Video Series Funded by IES "
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE)
+```
+
+What is included in this video tutorial?
+
+A demonstration of the speed at which an LCA analysis can be estimated and summarized using the `Tidy MplusAutomation` method.  
+
+# --------------------------------------------------------------------------------------
+
+## Tutorial Outline
+   
+1.  
+2.  
+3.  Install & load packages
+4.  Read in data to R
+5.  Look at LCA indicator variables
+6.  Run a `type=basic` model using `MplusAutomation`
+7.  
+8.  
+9.  
+
+# -------------------------------------------------------------------------------------- 
+
+## Github repository (everything you need to replicate analysis):
+
+https://github.com/garberadamc/QF-Getting-Started
+
+
+# -------------------------------------------------------------------------------------- 
+
+## Load packages
+
+# --------------------------------------------------------------------------------------
+
+```{r,eval=TRUE}
+
+library(MplusAutomation); library(glue) # estimation
+library(tidyverse); library(here); # tidyness 
+library(gt); library(reshape2); library(cowplot) # tables & figures
+
+```
+
+# --------------------------------------------------------------------------------------
+
+Data Source Information:
+
+https://github.com/UrbanInstitute/education-data-package-r
+
+https://educationdata.urban.org/documentation/index.html#data_sources
+
+Variable terms & definitions
+https://www.isbe.net/Documents/Civil-Rights-Data-Collection-Terms.pdf
+
+# --------------------------------------------------------------------------------------
+
+## Read in CSV data file from the `data` subfolder
+
+```{r}
+
+bully_data <- read_csv(here("data", "crdc_lca_data.csv"))
+
+```
+
+# --------------------------------------------------------------------------------------
+
+## Indicator Variables
+
+`report_dis`  = Number of students harassed or bullied on the basis of disability 
+`report_race` = Number of students harassed or bullied on the basis of race, color, or national origin  
+`report_sex`  = Number of students harassed or bullied on the basis of sex 
+`counselors_fte` = Number of full time equivalent counselors hired as school staff
+`psych_fte` = Number of full time equivalent psychologists hired as school staff
+`law_fte` = Number of full time equivalent law enforcement officers hired as school staff
+
+
+# --------------------------------------------------------------------------------------
+
+## Run a first model using the `mplusObject()` method 
+
+Model is `type = BASIC;` (i.e., returns descriptive statistics)
+```{r,eval=FALSE}
+
+m_basic  <- mplusObject(
+  
+  TITLE = "Explore descriptives with TYPE = BASIC", 
+  
+  VARIABLE = 
+ "",
+  
+  ANALYSIS = 
+ "",
+ 
+  usevariables = colnames(), 
+  rdata = )
+
+m_basic_fit <- mplusModeler( , 
+               dataout=here("", ""),
+               modelout=here("", ".inp"),
+               check=TRUE, run = TRUE, hashfilename = FALSE)
+
+```
+
+## Always check your model!
+
+- In the RStudio window pane on the `bottom-right`under the `files` tab click on the `mplus_files` folder
+- There should be 3 new files in this location that were produced by `mplusModeler()`
+- Click on the output file (`.out`) to check if the model estimated or if there are any error messages
+
+# --------------------------------------------------------------------------------------
+
+# Enumeration
+
+# --------------------------------------------------------------------------------------
+
+```{r, eval=FALSE}
+
+lca_k1_8  <- lapply(1:8, function(k) {
+  
+  lca_enum  <- mplusObject(
+      
+    TITLE = glue("Class {k} LCA"), 
+  
+    VARIABLE = glue(
+    "categorical = ; 
+     usevar = ;
+     classes = c({k}); "),
+  
+  ANALYSIS = 
+   "estimator = mlr; 
+    type = mixture;
+    starts = ; 
+    processors = 10;",
+  
+  OUTPUT = "tech11 tech14;",
+  
+  PLOT = 
+    "type = plot3; 
+     series = (*);",
+  
+  usevariables = colnames(bully_staff),
+  rdata = bully_staff)
+
+lca_enum_fit <- mplusModeler(lca_enum, 
+                            dataout=glue(here("", ".dat")),
+                            modelout=glue(here("", "c{k}_.inp")) ,
+                            check=TRUE, run = TRUE, hashfilename = FALSE)
+})
+
+```
+
+# --------------------------------------------------------------------------------------
+
+##  1.2 Generate Model Fit Summary Table 
+
+- This syntax can be used to compare model fit from the series of LCA models generated during enumeration
+- The code produces a table that is approximately in APA format. 
+
+# --------------------------------------------------------------------------------------
+
+Read in model fit statistics using `readModels()` and `mixtureSummaryTable()` functions
+```{r}
+output_lca <- readModels(here(""), quiet = TRUE)
+
+enum_summary <- LatexSummaryTable(output_lca,                                          
+                keepCols=c("Title", "Parameters", "LL", "BIC", "aBIC",
+                           "BLRT_PValue", "T11_VLMR_PValue","Observations"), 
+                sortBy = "Title")
+```
+
+Calculate relevant fit indices for summary table
+```{r}
+allFit <- enum_summary %>% 
+  mutate(aBIC = -2*LL+Parameters*log((Observations+2)/24)) %>% 
+  mutate(CIAC = -2*LL+Parameters*(log(Observations)+1)) %>% 
+  mutate(AWE = -2*LL+2*Parameters*(log(Observations)+1.5)) %>%
+  mutate(SIC = -.5*BIC) %>% 
+  mutate(expSIC = exp(SIC - max(SIC))) %>% 
+  mutate(BF = exp(SIC-lead(SIC))) %>% 
+  mutate(cmPk = expSIC/sum(expSIC)) %>% 
+  dplyr::select(1:5,9:10,6:7,13,14) %>% 
+  arrange(Parameters)
+```
+
+
+Generate the fit summary table
+```{r}
+allFit %>% 
+  mutate(Title = str_remove(Title, " LCA Enumeration ")) %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Model Fit Summary Table**"), subtitle = md("&nbsp;")) %>% 
+  cols_label(
+    Title = "Classes",
+    Parameters = md("Par"),
+    LL = md("*LL*"),
+    T11_VLMR_PValue = "VLMR",
+    BLRT_PValue = "BLRT",
+    BF = md("BF"),
+    cmPk = md("*cmPk*")) %>%
+  tab_footnote(
+    footnote = md(
+    "*Note.* Par = parameters; *LL* = log likelihood;
+      BIC = bayesian information criterion;
+      aBIC = sample size adjusted BIC; CAIC = consistent Akaike information criterion;
+      AWE = approximate weight of evidence criterion;
+      BLRT = bootstrapped likelihood ratio test p-value;
+      VLMR = Vuong-Lo-Mendell-Rubin adjusted likelihood ratio test p-value;
+      cmPk = approximate correct model probability."), 
+    locations = cells_title()) %>% 
+  tab_options(column_labels.font.weight = "bold") %>% 
+  fmt_number(10,decimals = 2,
+             drop_trailing_zeros=TRUE,
+             suffixing = TRUE) %>% 
+  fmt_number(c(3:9,11), 
+             decimals = 0) %>% 
+  fmt_missing(1:11,
+              missing_text = "--") %>% 
+  fmt(c(8:9,11),
+    fns = function(x) 
+    ifelse(x<0.001, "<.001",
+           scales::number(x, accuracy = 0.01))) %>%
+  fmt(10, fns = function(x) 
+    ifelse(x>100, ">100",
+           scales::number(x, accuracy = .1))) 
+
+```
+
+
+# --------------------------------------------------------------------------------------
+
+##  1.3 Plot Information Criteria 
+
+# --------------------------------------------------------------------------------------
+
+```{r}
+allFit %>% dplyr::select(2:7) %>% 
+  rowid_to_column() %>% 
+  pivot_longer(`BIC`:`AWE`, 
+    names_to = "Index", 
+    values_to = "ic_value") %>% 
+  mutate(Index = factor(Index,
+    levels = c("AWE","CIAC","BIC","aBIC"))) %>%
+  ggplot(aes(x = rowid, y = ic_value,
+    color = Index, shape = Index,
+    group = Index, lty = Index)) + 
+  geom_point(size = 2.0) + geom_line(size = .8) +
+  scale_x_continuous(breaks = 1:6) +
+  labs(x = "Number of Classes", y = "Information Criteria Value") +
+  theme_cowplot() + theme(legend.title = element_blank(), legend.position = "top")
+```
+```{r, eval=FALSE}
+ggsave(here("figures","FIT_BullyStaff_TX17.png"),    
+       dpi=300, height=4, width=6, units="in")    
+```
+
+# --------------------------------------------------------------------------------------
+
+##  1.4 Compare Conditional Item Probability Plots
+
+# --------------------------------------------------------------------------------------
+
+```{r, fig.width = 7, fig.height = 5}
+
+model_results <- data.frame()
+for (i in 1:length(output_17)) {
+  temp <- data.frame(unclass(output_17[[i]]$parameters$unstandardized)) %>% 
+    mutate(model = paste0(i, "-Class Model")) 
+  model_results <- rbind(model_results, temp) }
+
+pp_plots <- model_results %>% 
+  filter(paramHeader == "Thresholds") %>% dplyr::select(est, model, LatentClass, param) %>% 
+  mutate(prob = (1 / (1 + exp(est))), param = str_to_title(str_remove_all(param, "[$1]")))
+
+ggplot(pp_plots,
+       aes(x = param, y = prob, color = LatentClass, shape = LatentClass, group = LatentClass)) + 
+  geom_point() + geom_line() + facet_wrap(~ model, ncol = 2) + labs(x= "", y = "Probability") +
+  theme_minimal() + theme(legend.position = "none", axis.text.x = element_text(size = 6))
+```
+
+
+# --------------------------------------------------------------------------------------
+
+##  1.5 Plot Final Model - Conditional Item Probability Plot 
+
+# --------------------------------------------------------------------------------------
+
+### This syntax creates a function called `plot_lca_function` that requires 7 arguments (inputs):
+
+- `model_name`: name of Mplus model object (e.g., `model_step1`)
+- `item_num`: the number of items in LCA measurement model (e.g., `5`)
+- `class_num`: the number of classes (*k*) in LCA model (e.g., `3`)
+- `item_labels`: the item labels for x-axis (e.g., `c("Enjoy","Useful","Logical","Job","Adult")`)
+- `class_labels`: the class label names (e.g., `c("Adaptive Coping","Externalizing Behavior","No Coping")`)
+- `class_legend_order` = change the order that class names are listed in the plot legend (e.g., `c(2,1,3)`)
+- `plot_title`: include the title of the plot here (e.g., `"LCA Posterior Probability Plot"`)
+
+Read in plot data from Mplus output file `c3_lca.out`
+```{r}
+
+model_c3 <- readModels(here("enum2_CA17", "c3_lca.out"), quiet = TRUE)
+                           
+```
+
+```{r}
+
+plot_lca_function <- function(model_name,item_num,class_num,item_labels,
+                              class_labels,class_legend_order,plot_title){
+
+mplus_model <- as.data.frame(model_name$gh5$means_and_variances_data$estimated_probs$values)
+plot_data <- mplus_model[seq(2, 2*item_num, 2),]
+
+c_size <- as.data.frame(model_name$class_counts$modelEstimated$proportion)
+colnames(c_size) <- paste0("cs")
+c_size <- c_size %>% mutate(cs = round(cs*100, 2))
+colnames(plot_data) <- paste0(class_labels, glue(" ({c_size[1:class_num,]}%)"))
+plot_data <- plot_data %>% relocate(class_legend_order)
+
+plot_data <- cbind(Var = paste0("U", 1:item_num), plot_data)
+plot_data$Var <- factor(plot_data$Var,
+               labels = item_labels)
+plot_data$Var <- fct_inorder(plot_data$Var)
+
+pd_long_data <- melt(plot_data, id.vars = "Var") 
+
+# This syntax uses the data.frame created above to produce the plot with `ggplot()`
+
+p <- pd_long_data %>%
+  ggplot(aes(x = as.integer(Var), y = value,
+  shape = variable, colour = variable, lty = variable)) +
+  geom_point(size = 4) + geom_line() + 
+  scale_x_continuous("", breaks = 1:item_num,
+                     labels = function(x) str_wrap(plot_data$Var, width = 13)) + 
+  labs(title = plot_title, y = "Probability") +
+  theme_cowplot() +
+  theme(legend.title = element_blank(), 
+        legend.position = "top",
+        axis.text.x = element_text(size=8))
+
+p
+return(p)
+}
+
+```
+
+## Run C3 Plot
+```{r}
+
+plot_lca_function(
+  model_name = model_c3, 
+  item_num = 6,
+  class_num = 3,
+  item_labels = c("harassment: disability","harassment: race","harassment: sex",
+                  "school staff: counselor","school staff: psychologist","school staff: law enforcement"),
+  class_labels = c("C1","C2","C3"),
+  class_legend_order = c(1,2,3),
+  plot_title = "California: Harrasment & School Staff (K = 3)"
+  )
+
+```
+
+```{r, eval=FALSE}
+ggsave(here("",".png"),    
+       dpi=300, height=4, width=6, units="in")    
+```
+
+
+
+

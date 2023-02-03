@@ -1,0 +1,13 @@
+TITLE:
+Explore descriptives with TYPE = BASIC
+DATA:
+FILE = "/Users/agarber/github/quick-lca-mplusautomation/mplus_basic/basic.dat";
+ 
+VARIABLE:
+NAMES = leaid ncessch report_dis report_race report_sex counselors_fte psych_fte
+     law_fte; 
+ MISSING=.;
+ usevar = report_dis report_race report_sex counselors_fte psych_fte law_fte;
+  categorical = report_dis report_race report_sex counselors_fte psych_fte law_fte;
+ANALYSIS:
+type = basic; 
