@@ -2,9 +2,11 @@
 
 - - -
 
-### A Quick Latent Class Analysis (LCA) from Start to Finish in `MplusAutomation`"
+### A Quick Latent Class Analysis (LCA) from Start to Finish in `MplusAutomation`
 
-#### "IMMERSE Video Series Funded by IES"
+#### IMMERSE Project: Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators
+
+#### Video Series Funded by IES Training Grant (R305B220021)
 
 #### *Adam Garber*
 
