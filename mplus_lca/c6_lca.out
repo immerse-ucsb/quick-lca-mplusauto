@@ -1,13 +1,13 @@
 Mplus VERSION 8.6 (Mac)
 MUTHEN & MUTHEN
-02/03/2023   3:18 PM
+02/07/2023  10:54 AM
 
 INPUT INSTRUCTIONS
 
   TITLE:
   Class 6 LCA
   DATA:
-  FILE = "/Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat";
+  FILE = "/Users/agarber/github/quick-lca-mplusauto/mplus_lca/lca.dat";
 
   VARIABLE:
   NAMES = leaid ncessch report_dis report_race report_sex counselors_fte psych_fte
@@ -19,13 +19,13 @@ INPUT INSTRUCTIONS
   ANALYSIS:
   estimator = mlr;
       type = mixture;
-      starts = 1000 200;
+      starts = 500 100;
       processors = 10;
   OUTPUT:
   tech11 tech14;
   PLOT:
   type = plot3;
-       series = report_dis report_race report_sex counselors_fte psych_fte law_fte(*);
+       series = report_dis report_race report_sex counselors_fte psych_fte law_fte (*);
 
 
 
@@ -92,8 +92,8 @@ Maximum number of iterations for H1                           2000
 Convergence criterion for H1                             0.100D-03
 Optimization algorithm                                         EMA
 Random Starts Specifications
-  Number of initial stage random starts                       1000
-  Number of final stage optimizations                          200
+  Number of initial stage random starts                        500
+  Number of final stage optimizations                          100
   Number of initial stage iterations                            10
   Initial stage convergence criterion                    0.100D+01
   Random starts scale                                    0.500D+01
@@ -101,7 +101,7 @@ Random Starts Specifications
 Link                                                         LOGIT
 
 Input data file(s)
-  /Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat
+  /Users/agarber/github/quick-lca-mplusauto/mplus_lca/lca.dat
 Input data format  FREE
 
 
@@ -164,45 +164,39 @@ RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
 Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
 
            -5099.881  597614           284
+           -5099.881  259507           53
            -5099.881  765392           382
-           -5099.881  496344           808
+           -5099.881  181293           212
            -5099.881  621542           375
-           -5099.881  163110           584
            -5100.272  415502           194
            -5100.780  529496           343
-           -5100.780  117587           572
-           -5100.842  105656           909
-           -5100.842  418686           338
            -5100.874  207896           25
            -5100.928  851945           18
            -5100.928  318230           46
            -5101.017  471040           403
-           -5101.071  314034           513
-           -5101.071  455410           999
-           -5101.071  113138           585
+           -5101.071  476498           179
            -5101.071  967237           48
            -5101.071  871851           257
-           -5101.155  580539           786
-           -5101.209  370957           554
-           -5101.331  822698           621
+           -5101.089  898745           466
+           -5101.448  850545           357
+           -5101.494  164305           128
            -5101.502  273992           349
            -5101.502  769907           457
+           -5101.512  124999           96
            -5101.512  602797           336
            -5101.579  662718           460
            -5101.579  605358           321
-           -5101.592  531546           702
-           -5101.593  435506           988
-           -5101.593  869564           869
-           -5101.936  891347           504
-           -5102.034  7195             697
+           -5101.859  614535           449
+           -5101.964  156536           245
+           -5102.275  458181           189
            -5102.613  569131           26
            -5102.616  375590           438
-           -5102.747  833196           715
-           -5102.875  148918           682
            -5103.084  437181           135
            -5104.611  21345            199
+           -5104.857  948615           140
+           -5106.486  565819           65
 
-162 perturbed starting value run(s) did not converge or were rejected in the third stage.
+68 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -804,8 +798,8 @@ Latent Class 5 Compared to Latent Class 6
 TECHNICAL 11 OUTPUT
 
      Random Starts Specifications for the k-1 Class Analysis Model
-        Number of initial stage random starts                1000
-        Number of final stage optimizations                   200
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
 
 
 
@@ -827,8 +821,8 @@ TECHNICAL 11 OUTPUT
 TECHNICAL 14 OUTPUT
 
      Random Starts Specifications for the k-1 Class Analysis Model
-        Number of initial stage random starts                1000
-        Number of final stage optimizations                   200
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
 
      Random Starts Specification for the k-1 Class Model for Generated Data
         Number of initial stage random starts                   0
@@ -857,8 +851,8 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  15:18:50
-        Ending Time:  15:18:54
+     Beginning Time:  10:54:32
+        Ending Time:  10:54:36
        Elapsed Time:  00:00:04
 
 

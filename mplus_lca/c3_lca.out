@@ -1,13 +1,13 @@
 Mplus VERSION 8.6 (Mac)
 MUTHEN & MUTHEN
-02/03/2023   3:18 PM
+02/07/2023  10:54 AM
 
 INPUT INSTRUCTIONS
 
   TITLE:
   Class 3 LCA
   DATA:
-  FILE = "/Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat";
+  FILE = "/Users/agarber/github/quick-lca-mplusauto/mplus_lca/lca.dat";
 
   VARIABLE:
   NAMES = leaid ncessch report_dis report_race report_sex counselors_fte psych_fte
@@ -19,13 +19,13 @@ INPUT INSTRUCTIONS
   ANALYSIS:
   estimator = mlr;
       type = mixture;
-      starts = 1000 200;
+      starts = 500 100;
       processors = 10;
   OUTPUT:
   tech11 tech14;
   PLOT:
   type = plot3;
-       series = report_dis report_race report_sex counselors_fte psych_fte law_fte(*);
+       series = report_dis report_race report_sex counselors_fte psych_fte law_fte (*);
 
 
 
@@ -92,8 +92,8 @@ Maximum number of iterations for H1                           2000
 Convergence criterion for H1                             0.100D-03
 Optimization algorithm                                         EMA
 Random Starts Specifications
-  Number of initial stage random starts                       1000
-  Number of final stage optimizations                          200
+  Number of initial stage random starts                        500
+  Number of final stage optimizations                          100
   Number of initial stage iterations                            10
   Initial stage convergence criterion                    0.100D+01
   Random starts scale                                    0.500D+01
@@ -101,7 +101,7 @@ Random Starts Specifications
 Link                                                         LOGIT
 
 Input data file(s)
-  /Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat
+  /Users/agarber/github/quick-lca-mplusauto/mplus_lca/lca.dat
 Input data format  FREE
 
 
@@ -163,201 +163,104 @@ RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
 
 Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
 
-           -5122.478  424223           900
            -5122.478  887580           493
-           -5122.478  686384           690
-           -5122.478  67009            564
-           -5122.478  573367           986
            -5122.478  345726           461
-           -5122.478  200041           810
            -5122.478  471438           252
-           -5122.478  391368           802
-           -5122.478  180889           920
-           -5122.478  78862            529
-           -5122.478  966499           963
-           -5122.478  465160           862
-           -5122.478  392751           480
            -5122.478  992389           77
-           -5122.478  125727           899
-           -5122.478  268896           124
-           -5122.478  21132            351
            -5122.478  73576            213
+           -5122.478  268896           124
            -5122.478  631413           439
-           -5122.478  252346           528
+           -5122.478  131856           90
+           -5122.478  21132            351
            -5122.478  303634           169
            -5122.478  318230           46
-           -5122.478  206099           363
-           -5122.478  663090           906
-           -5122.478  80438            246
-           -5122.478  35191            703
-           -5122.478  17896            592
-           -5122.478  496344           808
            -5122.478  780698           337
-           -5122.478  496762           870
+           -5122.478  206099           363
+           -5122.478  80438            246
            -5122.478  112586           494
            -5122.478  840031           276
-           -5122.478  266008           656
-           -5122.478  72344            897
            -5122.478  813779           92
-           -5122.478  536551           696
-           -5122.478  347222           533
+           -5122.478  686482           215
+           -5122.478  70118            104
            -5122.478  140442           500
            -5122.478  105435           265
            -5122.478  93468            3
            -5122.478  354208           196
-           -5122.478  7886             804
-           -5122.478  662718           460
            -5122.478  570908           98
-           -5122.478  308582           752
-           -5122.478  705224           953
-           -5122.478  243346           930
-           -5122.478  677720           681
+           -5122.478  662718           460
            -5122.478  7959             256
-           -5122.478  831410           567
            -5122.478  765392           382
            -5122.478  801717           364
            -5122.478  100874           108
            -5122.478  605565           404
-           -5122.478  966603           919
            -5122.478  193042           316
-           -5122.478  779820           877
-           -5122.478  11984            934
            -5122.478  383986           159
            -5122.478  608496           4
            -5122.478  484687           306
-           -5122.478  82200            830
-           -5122.478  602032           648
-           -5122.478  572637           989
-           -5122.478  700270           855
-           -5122.478  225995           847
            -5122.478  97158            205
-           -5122.478  473942           574
            -5122.478  164305           128
            -5122.478  173440           328
-           -5122.478  838615           677
            -5122.478  797594           234
            -5122.478  392418           28
            -5122.478  195353           225
-           -5122.478  900921           984
            -5122.478  53621            483
-           -5122.478  496703           758
            -5122.478  123985           248
-           -5122.478  462821           745
            -5122.478  68850            462
            -5122.478  404426           344
-           -5122.478  427006           839
            -5122.478  484501           163
-           -5122.478  568534           961
-           -5122.478  671390           814
-           -5122.478  552272           654
-           -5122.478  373505           88
            -5122.478  931874           141
+           -5122.478  373505           88
            -5122.478  636396           168
-           -5122.478  461866           722
-           -5122.478  995249           525
            -5122.478  335485           496
-           -5122.478  194143           510
-           -5122.478  383979           603
-           -5122.478  319144           176
            -5122.478  76974            16
-           -5122.478  848590           694
-           -5122.478  881886           608
            -5122.478  669634           335
            -5122.478  606576           151
-           -5122.478  434915           552
-           -5122.478  81951            907
            -5122.478  471040           403
-           -5122.478  29591            633
-           -5122.478  682718           733
-           -5122.478  595759           997
            -5122.478  741888           138
-           -5122.478  941525           609
-           -5122.478  643311           888
-           -5122.478  443442           380
-           -5122.478  209031           632
-           -5122.478  761302           744
-           -5122.478  995913           787
            -5122.478  207896           25
-           -5122.478  113138           585
-           -5122.478  531546           702
-           -5122.478  566739           575
-           -5122.478  987560           985
            -5122.478  40340            188
            -5122.478  967902           52
            -5122.478  699554           427
-           -5122.478  595619           779
+           -5122.478  926797           406
            -5122.478  85462            51
-           -5122.478  138695           783
-           -5122.478  163110           584
            -5122.478  714997           399
-           -5122.478  94610            884
-           -5122.478  266038           672
            -5122.478  568405           233
-           -5122.478  318177           748
            -5122.478  741484           441
-           -5122.478  279850           555
-           -5122.478  373702           669
            -5122.478  399671           13
            -5122.478  576220           115
            -5122.478  667250           318
-           -5122.478  650354           577
            -5122.478  485256           371
-           -5122.478  251641           784
            -5122.478  217130           443
-           -5122.478  87586            871
            -5122.478  751054           117
-           -5122.478  91231            727
-           -5122.478  246261           38
            -5122.478  146900           391
            -5122.478  253358           2
            -5122.478  344422           296
-           -5122.478  793487           595
            -5122.478  587946           120
-           -5122.478  928624           981
-           -5122.478  694303           282
            -5122.478  238906           430
            -5122.478  700349           401
            -5122.478  987090           70
-           -5122.478  824956           607
-           -5122.478  179022           687
-           -5122.478  118958           994
            -5122.478  573096           20
-           -5122.478  907810           795
            -5122.478  195763           358
            -5122.478  804660           260
            -5122.478  188498           258
-           -5122.478  538872           949
-           -5122.478  551340           766
            -5122.478  748692           204
            -5122.478  319575           499
            -5122.478  168762           200
            -5122.478  782821           272
            -5122.478  726035           191
-           -5122.478  569338           755
            -5122.478  285380           1
            -5122.478  23012            352
            -5122.478  652266           490
-           -5122.478  486622           522
            -5122.478  408713           450
-           -5122.478  117391           710
            -5122.478  930872           277
            -5122.478  402224           91
-           -5122.478  589483           950
            -5122.478  790452           303
-           -5122.478  816765           959
-           -5122.478  638611           524
            -5122.478  227563           63
-           -5122.478  506886           576
-           -5122.478  642909           251
-           -5122.478  339073           841
            -5122.478  512836           289
-           -5122.478  677062           680
            -5122.478  529496           343
-           -5122.478  161421           519
            -5122.478  635245           121
-           -5122.478  822698           621
 
-7 perturbed starting value run(s) did not converge or were rejected in the third stage.
+4 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -430,9 +333,9 @@ BASED ON THE ESTIMATED MODEL
     Latent
    Classes
 
-       1        215.53083          0.10633
-       2       1305.91637          0.64426
-       3        505.55280          0.24941
+       1        505.55209          0.24941
+       2        215.53106          0.10633
+       3       1305.91685          0.64426
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -441,9 +344,9 @@ BASED ON ESTIMATED POSTERIOR PROBABILITIES
     Latent
    Classes
 
-       1        215.53083          0.10633
-       2       1305.91637          0.64426
-       3        505.55280          0.24941
+       1        505.55209          0.24941
+       2        215.53106          0.10633
+       3       1305.91685          0.64426
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -454,9 +357,9 @@ Class Counts and Proportions
     Latent
    Classes
 
-       1              193          0.09521
-       2             1262          0.62259
-       3              572          0.28219
+       1              572          0.28219
+       2              193          0.09521
+       3             1262          0.62259
 
 
 CLASSIFICATION QUALITY
@@ -469,9 +372,9 @@ by Latent Class (Column)
 
            1        2        3
 
-    1   0.904    0.084    0.012
-    2   0.014    0.893    0.093
-    3   0.041    0.284    0.675
+    1   0.675    0.041    0.284
+    2   0.012    0.904    0.084
+    3   0.093    0.014    0.893
 
 
 Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -479,9 +382,9 @@ by Latent Class (Row)
 
            1        2        3
 
-    1   0.810    0.082    0.108
-    2   0.012    0.863    0.125
-    3   0.005    0.232    0.764
+    1   0.764    0.005    0.232
+    2   0.108    0.810    0.082
+    3   0.125    0.012    0.863
 
 
 Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -489,9 +392,9 @@ by Latent Class (Row)
 
               1        2        3
 
-    1      2.011   -0.280    0.000
-    2     -2.311    1.936    0.000
-    3     -5.103   -1.192    0.000
+    1      1.192   -3.911    0.000
+    2      0.280    2.292    0.000
+    3     -1.936   -4.247    0.000
 
 
 MODEL RESULTS
@@ -502,6 +405,16 @@ MODEL RESULTS
 Latent Class 1
 
  Thresholds
+    REPORT_D$1         4.062      0.723      5.620      0.000
+    REPORT_R$1        15.000      0.000    999.000    999.000
+    REPORT_S$1         1.090      0.188      5.786      0.000
+    COUNSELO$1        -1.253      0.296     -4.236      0.000
+    PSYCH_FT$1        -1.215      0.251     -4.845      0.000
+    LAW_FTE$1          0.662      0.173      3.833      0.000
+
+Latent Class 2
+
+ Thresholds
     REPORT_D$1         0.841      0.176      4.770      0.000
     REPORT_R$1        -1.436      0.476     -3.017      0.003
     REPORT_S$1        -0.786      0.213     -3.680      0.000
@@ -509,7 +422,7 @@ Latent Class 1
     PSYCH_FT$1        -0.762      0.175     -4.361      0.000
     LAW_FTE$1          1.036      0.192      5.408      0.000
 
-Latent Class 2
+Latent Class 3
 
  Thresholds
     REPORT_D$1         4.659      0.421     11.079      0.000
@@ -519,26 +432,16 @@ Latent Class 2
     PSYCH_FT$1         0.735      0.108      6.803      0.000
     LAW_FTE$1          3.929      0.657      5.981      0.000
 
-Latent Class 3
-
- Thresholds
-    REPORT_D$1         4.062      0.723      5.620      0.000
-    REPORT_R$1        15.000      0.000    999.000    999.000
-    REPORT_S$1         1.090      0.188      5.786      0.000
-    COUNSELO$1        -1.253      0.296     -4.236      0.000
-    PSYCH_FT$1        -1.215      0.251     -4.845      0.000
-    LAW_FTE$1          0.662      0.173      3.833      0.000
-
 Categorical Latent Variables
 
  Means
-    C#1               -0.853      0.207     -4.126      0.000
-    C#2                0.949      0.226      4.194      0.000
+    C#1               -0.949      0.226     -4.194      0.000
+    C#2               -1.802      0.153    -11.777      0.000
 
 
 QUALITY OF NUMERICAL RESULTS
 
-     Condition Number for the Information Matrix              0.274E-02
+     Condition Number for the Information Matrix              0.356E-02
        (ratio of smallest to largest eigenvalue)
 
 
@@ -548,48 +451,6 @@ RESULTS IN PROBABILITY SCALE
                     Estimate       S.E.  Est./S.E.    P-Value
 
 Latent Class 1
-
- REPORT_DIS
-    Category 1         0.699      0.037     18.818      0.000
-    Category 2         0.301      0.037      8.112      0.000
- REPORT_RAC
-    Category 1         0.192      0.074      2.600      0.009
-    Category 2         0.808      0.074     10.935      0.000
- REPORT_SEX
-    Category 1         0.313      0.046      6.821      0.000
-    Category 2         0.687      0.046     14.963      0.000
- COUNSELORS
-    Category 1         0.456      0.042     10.881      0.000
-    Category 2         0.544      0.042     12.973      0.000
- PSYCH_FTE
-    Category 1         0.318      0.038      8.393      0.000
-    Category 2         0.682      0.038     17.983      0.000
- LAW_FTE
-    Category 1         0.738      0.037     19.926      0.000
-    Category 2         0.262      0.037      7.068      0.000
-
-Latent Class 2
-
- REPORT_DIS
-    Category 1         0.991      0.004    253.261      0.000
-    Category 2         0.009      0.004      2.401      0.016
- REPORT_RAC
-    Category 1         0.974      0.008    124.102      0.000
-    Category 2         0.026      0.008      3.292      0.001
- REPORT_SEX
-    Category 1         0.948      0.011     90.202      0.000
-    Category 2         0.052      0.011      4.934      0.000
- COUNSELORS
-    Category 1         0.678      0.021     31.603      0.000
-    Category 2         0.322      0.021     14.990      0.000
- PSYCH_FTE
-    Category 1         0.676      0.024     28.557      0.000
-    Category 2         0.324      0.024     13.694      0.000
- LAW_FTE
-    Category 1         0.981      0.012     78.917      0.000
-    Category 2         0.019      0.012      1.552      0.121
-
-Latent Class 3
 
  REPORT_DIS
     Category 1         0.983      0.012     81.767      0.000
@@ -610,6 +471,48 @@ Latent Class 3
     Category 1         0.660      0.039     17.008      0.000
     Category 2         0.340      0.039      8.769      0.000
 
+Latent Class 2
+
+ REPORT_DIS
+    Category 1         0.699      0.037     18.818      0.000
+    Category 2         0.301      0.037      8.112      0.000
+ REPORT_RAC
+    Category 1         0.192      0.074      2.600      0.009
+    Category 2         0.808      0.074     10.935      0.000
+ REPORT_SEX
+    Category 1         0.313      0.046      6.821      0.000
+    Category 2         0.687      0.046     14.963      0.000
+ COUNSELORS
+    Category 1         0.456      0.042     10.881      0.000
+    Category 2         0.544      0.042     12.973      0.000
+ PSYCH_FTE
+    Category 1         0.318      0.038      8.393      0.000
+    Category 2         0.682      0.038     17.983      0.000
+ LAW_FTE
+    Category 1         0.738      0.037     19.926      0.000
+    Category 2         0.262      0.037      7.068      0.000
+
+Latent Class 3
+
+ REPORT_DIS
+    Category 1         0.991      0.004    253.261      0.000
+    Category 2         0.009      0.004      2.401      0.016
+ REPORT_RAC
+    Category 1         0.974      0.008    124.102      0.000
+    Category 2         0.026      0.008      3.292      0.001
+ REPORT_SEX
+    Category 1         0.948      0.011     90.202      0.000
+    Category 2         0.052      0.011      4.934      0.000
+ COUNSELORS
+    Category 1         0.678      0.021     31.603      0.000
+    Category 2         0.322      0.021     14.990      0.000
+ PSYCH_FTE
+    Category 1         0.676      0.024     28.557      0.000
+    Category 2         0.324      0.024     13.694      0.000
+ LAW_FTE
+    Category 1         0.981      0.012     78.918      0.000
+    Category 2         0.019      0.012      1.552      0.121
+
 
 LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 
@@ -619,9 +522,39 @@ LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 Latent Class 1 Compared to Latent Class 2
 
  REPORT_D
-    Category > 1      45.478     20.499     18.798    110.023
+    Category > 1       0.040      0.030      0.009      0.173
  REPORT_R
-    Category > 1     158.544     88.211     53.278    471.791
+    Category > 1       0.000      0.000      0.000      0.000
+ REPORT_S
+    Category > 1       0.153      0.043      0.088      0.266
+ COUNSELO
+    Category > 1       2.937      1.017      1.490      5.790
+ PSYCH_FT
+    Category > 1       1.573      0.487      0.857      2.886
+ LAW_FTE
+    Category > 1       1.453      0.381      0.869      2.430
+
+Latent Class 1 Compared to Latent Class 3
+
+ REPORT_D
+    Category > 1       1.816      1.727      0.281     11.713
+ REPORT_R
+    Category > 1       0.000      0.000      0.000      0.000
+ REPORT_S
+    Category > 1       6.147      1.694      3.582     10.548
+ COUNSELO
+    Category > 1       7.384      2.163      4.159     13.109
+ PSYCH_FT
+    Category > 1       7.029      1.786      4.272     11.565
+ LAW_FTE
+    Category > 1      26.211     16.764      7.483     91.811
+
+Latent Class 2 Compared to Latent Class 3
+
+ REPORT_D
+    Category > 1      45.478     20.499     18.798    110.022
+ REPORT_R
+    Category > 1     158.543     88.210     53.278    471.787
  REPORT_S
     Category > 1      40.100     11.524     22.831     70.431
  COUNSELO
@@ -629,44 +562,14 @@ Latent Class 1 Compared to Latent Class 2
  PSYCH_FT
     Category > 1       4.468      0.914      2.993      6.671
  LAW_FTE
-    Category > 1      18.033     12.287      4.743     68.556
-
-Latent Class 1 Compared to Latent Class 3
-
- REPORT_D
-    Category > 1      25.046     18.767      5.767    108.777
- REPORT_R
-    Category > 1   *********      0.000  *********  *********
- REPORT_S
-    Category > 1       6.524      1.831      3.763     11.310
- COUNSELO
-    Category > 1       0.340      0.118      0.173      0.671
- PSYCH_FT
-    Category > 1       0.636      0.197      0.347      1.166
- LAW_FTE
-    Category > 1       0.688      0.180      0.411      1.150
-
-Latent Class 2 Compared to Latent Class 3
-
- REPORT_D
-    Category > 1       0.551      0.524      0.085      3.553
- REPORT_R
-    Category > 1   86711.289      0.000  86711.305  86711.305
- REPORT_S
-    Category > 1       0.163      0.045      0.095      0.279
- COUNSELO
-    Category > 1       0.135      0.040      0.076      0.240
- PSYCH_FT
-    Category > 1       0.142      0.036      0.086      0.234
- LAW_FTE
-    Category > 1       0.038      0.024      0.011      0.134
+    Category > 1      18.033     12.287      4.744     68.555
 
 
 TECHNICAL 11 OUTPUT
 
      Random Starts Specifications for the k-1 Class Analysis Model
-        Number of initial stage random starts                1000
-        Number of final stage optimizations                   200
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
 
 
 
@@ -675,8 +578,8 @@ TECHNICAL 11 OUTPUT
           H0 Loglikelihood Value                        -5194.136
           2 Times the Loglikelihood Difference            143.317
           Difference in the Number of Parameters                7
-          Mean                                             -0.420
-          Standard Deviation                               12.568
+          Mean                                             -0.421
+          Standard Deviation                               12.569
           P-Value                                          0.0000
 
      LO-MENDELL-RUBIN ADJUSTED LRT TEST
@@ -688,8 +591,8 @@ TECHNICAL 11 OUTPUT
 TECHNICAL 14 OUTPUT
 
      Random Starts Specifications for the k-1 Class Analysis Model
-        Number of initial stage random starts                1000
-        Number of final stage optimizations                   200
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
 
      Random Starts Specification for the k-1 Class Model for Generated Data
         Number of initial stage random starts                   0
@@ -709,12 +612,6 @@ TECHNICAL 14 OUTPUT
           Approximate P-Value                              0.0000
           Successful Bootstrap Draws                            5
 
-     WARNING:  OF THE 5 BOOTSTRAP DRAWS, 3 DRAWS HAD BOTH A SMALLER LRT VALUE THAN THE
-     OBSERVED LRT VALUE AND NOT A REPLICATED BEST LOGLIKELIHOOD VALUE FOR THE 3-CLASS MODEL.
-     THIS MEANS THAT THE P-VALUE MAY NOT BE TRUSTWORTHY DUE TO LOCAL MAXIMA.
-     INCREASE THE NUMBER OF RANDOM STARTS USING THE LRTSTARTS OPTION.
-
-
 
 PLOT INFORMATION
 
@@ -724,8 +621,8 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  15:18:38
-        Ending Time:  15:18:40
+     Beginning Time:  10:54:21
+        Ending Time:  10:54:23
        Elapsed Time:  00:00:02
 
 

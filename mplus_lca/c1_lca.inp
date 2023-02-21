@@ -1,7 +1,7 @@
 TITLE:
 Class 1 LCA
 DATA:
-FILE = "/Users/agarber/github/quick-lca-mplusautomation/mplus_lca/lca.dat";
+FILE = "/Users/agarber/github/quick-lca-mplusauto/mplus_lca/lca.dat";
  
 VARIABLE:
 NAMES = leaid ncessch report_dis report_race report_sex counselors_fte psych_fte
@@ -13,10 +13,10 @@ classes = c(1);
 ANALYSIS:
 estimator = mlr; 
     type = mixture;
-    starts = 1000 200; 
+    starts = 500 100; 
     processors = 10;
 OUTPUT:
 tech11 tech14;
 PLOT:
 type = plot3; 
-     series = report_dis report_race report_sex counselors_fte psych_fte law_fte(*);
+     series = report_dis report_race report_sex counselors_fte psych_fte law_fte (*);

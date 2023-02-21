@@ -1,22 +1,20 @@
----
-title: "A Quick Latent Class Analysis (LCA) from Start to Finish in `MplusAutomation`"
-author: '*Adam Garber*'
-subtitle: "IMMERSE Video Series Funded by IES "
-date: "`r format(Sys.time(), '%B %d, %Y')`"
-output: pdf_document
----
+## Video tutorial repository: "quick-lca-mplusauto""
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE)
-```
+- - -
 
-# --------------------------------------------------------------------------------------
+### A Quick Latent Class Analysis (LCA) from Start to Finish in `MplusAutomation`"
+
+#### "IMMERSE Video Series Funded by IES"
+
+#### *Adam Garber*
+
+- - -
 
 ## What is included in this video tutorial?
 
 > A demonstration of the speed at which an LCA analysis can be estimated and summarized using the `Tidy MplusAutomation` method.  
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ## Tutorial Outline
 
@@ -31,19 +29,19 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALS
 8.  Plot final model in publication format (e.g., Class-3 model)
 
 
-# -------------------------------------------------------------------------------------- 
+- - - 
 
 ## 0. Github repository (everything you need to replicate analysis):
 
-# -------------------------------------------------------------------------------------- 
+- - - 
 
 **Link:** https://github.com/immerse-ucsb/quick-lca-mplusauto
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ## 1. Data Source: Civil Rights Data Collection (CRDC)
 
-# --------------------------------------------------------------------------------------
+- - -
 
 > The CRDC is a federally mandated school and district level data collection effort that occurs every other year. This public data is currently available for selected variables across 4 years (2011, 2013, 2015, 2017) and all US states. In the following tutorial six focal variables are utilized as indicators of the latent class model; three variables which report on harassment/bullying in schools based on disability, race, or sex, and three variables on full-time equivalent school staff employees (counselor, psychologist, law enforcement). For this example, we utilize a sample of schools from the state of Arizona reported in 2017.
 
@@ -51,7 +49,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALS
 
 **Data access (`R`):** https://github.com/UrbanInstitute/education-data-package-r
 
-# -------------------------------------------------------------------------------------- 
+- - - 
 
 ## Latent Class Indicator Variables
 
@@ -67,13 +65,13 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALS
 
 `law_fte` = Number of full time equivalent law enforcement officers hired as school staff
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ## 2. Load packages
 
-# --------------------------------------------------------------------------------------
+- - -
 
-```{r,eval=TRUE}
+```{r}
 
 library(MplusAutomation); library(glue) # estimation
 library(tidyverse); library(here); # tidyness 
@@ -81,11 +79,11 @@ library(gt); library(reshape2); library(cowplot) # tables & figures
 
 ```
 
-# -------------------------------------------------------------------------------------- 
+- - - 
 
 ## 3. Read in CSV data file from the `data` subfolder
 
-# -------------------------------------------------------------------------------------- 
+- - - 
 
 ```{r}
 
@@ -94,13 +92,13 @@ bully_data <- read_csv(here("data", "crdc_lca_data.csv"))
 ```
 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ## 4. Enumeration
 
-# --------------------------------------------------------------------------------------
+- - -
 
-```{r, eval=FALSE}
+```{r}
 
 lca_k1_6  <- lapply(1:6, function(k) {
   
@@ -141,14 +139,14 @@ lca_enum_fit <- mplusModeler(lca_enum,
 - In the RStudio window pane on the `bottom-right`under the `files` tab click on the `mplus_lca` folder
 - Click on one of the Mplus output files (`.out`) to check if the model estimated or if there are any error messages
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ##  5. Generate Model Fit Summary Table 
 
 - This syntax can be used to compare model fit from the series of LCA models generated during enumeration
 - The code produces a table that is approximately in APA format. 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Read in model fit statistics using `readModels()` and `mixtureSummaryTable()` functions
 
@@ -161,7 +159,7 @@ enum_summary <- LatexSummaryTable(output_lca,
                 sortBy = "Title")
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Calculate relevant fit indices for summary table
 
@@ -178,7 +176,7 @@ allFit <- enum_summary %>%
   arrange(Parameters)
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Generate the fit summary table
 
@@ -225,11 +223,11 @@ allFit %>%
 ```
 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ##  6. Plot Information Criteria 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ```{r}
 allFit %>% dplyr::select(2:7) %>% 
@@ -248,18 +246,18 @@ allFit %>% dplyr::select(2:7) %>%
   theme_cowplot() + theme(legend.title = element_blank(), legend.position = "top")
 ```
 
-```{r, eval=FALSE}
+```{r}
 ggsave(here("figures","fit_criteria_plot.png"),    
        dpi=300, height=4, width=6, units="in")    
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ##  7. Compare Conditional Item Probability Plots
 
-# --------------------------------------------------------------------------------------
+- - -
 
-```{r, fig.width = 7, fig.height = 5}
+```{r}
 
 model_results <- data.frame()
 for (i in 1:length(output_lca)) {
@@ -280,11 +278,11 @@ ggplot(pp_plots,
 ```
 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ##  8. Plot Final Model - Conditional Item Probability Plot 
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ### This syntax creates a function called `plot_lca_function` that requires 7 arguments (inputs):
 
@@ -296,7 +294,7 @@ ggplot(pp_plots,
 - `class_legend_order` = change the order that class names are listed in the plot legend (e.g., `c(2,1,3)`)
 - `plot_title`: include the title of the plot here (e.g., `"LCA Posterior Probability Plot"`)
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Read in plot data from Mplus output file `c3_lca.out`
 
@@ -306,7 +304,7 @@ model_c3 <- readModels(here("mplus_lca", "c3_lca.out"), quiet = TRUE)
                            
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Load `plot_lca_function` into R environment
 
@@ -349,7 +347,7 @@ return(p)
 
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Run C3 Plot
 ```{r}
@@ -368,16 +366,16 @@ plot_lca_function(
 
 ```
 
-```{r, eval=FALSE}
+```{r}
 ggsave(here("figures","c3_lca_plot.png"),    
        dpi=300, height=4, width=6, units="in")    
 ```
 
-# --------------------------------------------------------------------------------------
+- - -
 
 ## References
 
-# --------------------------------------------------------------------------------------
+- - -
 
 Hallquist, M. N., & Wiley, J. F.
 (2018).
@@ -410,4 +408,4 @@ Wickham et al., (2019).
 Welcome to the tidyverse.
 Journal of Open Source Software, 4(43), 1686, <https://doi.org/10.21105/joss.01686>
 
-# --------------------------------------------------------------------------------------
+- - -
